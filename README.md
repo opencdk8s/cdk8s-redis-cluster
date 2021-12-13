@@ -12,7 +12,7 @@ Replicated, password protected redis cluster statefulset setup. Uses Bitnamis re
     volumeType: 'io1',
     volumeIopsPerGb: '100',
     redisImage: 'test-image',
-    redisPassword: 'dGVzdDIK', // base64 encoded
+    redisPassword: 'helloworld', // get from aws secrets manager
     nodeSelector: {
       test: 'test',
     },
