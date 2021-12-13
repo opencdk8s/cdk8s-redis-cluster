@@ -19,7 +19,7 @@ Array [
   Object {
     "apiVersion": "v1",
     "data": Object {
-      "redis-password": "dGVzdA==",
+      "redis-password": "test",
     },
     "kind": "Secret",
     "metadata": Object {
@@ -2211,7 +2211,7 @@ Array [
   Object {
     "apiVersion": "v1",
     "data": Object {
-      "redis-password": "dGVzdDI=",
+      "redis-password": "test2",
     },
     "kind": "Secret",
     "metadata": Object {

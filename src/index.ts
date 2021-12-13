@@ -36,7 +36,7 @@ export interface RedisOptions {
   readonly volumeFsType?: string;
   /**
    * The redis password
-   * Has to be plaintext, a way you can securely get a password is by using AWS Secrets Manager
+   * Has to be base64 encoded, a way you can securely get a password is by using AWS Secrets Manager
    */
   readonly redisPassword: string;
   /**
@@ -103,7 +103,7 @@ export class Redis extends Construct {
       },
       type: 'Opaque',
       data: {
-        'redis-password': Buffer.from(opts.redisPassword).toString('base64'),
+        'redis-password': opts.redisPassword,
       },
     });
 

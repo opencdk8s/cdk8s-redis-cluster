@@ -31768,7 +31768,7 @@ public readonly redisPassword: string;
 
 - *Type:* `string`
 
-The redis password Has to be plaintext, a way you can securely get a password is by using AWS Secrets Manager.
+The redis password Has to be base64 encoded, a way you can securely get a password is by using AWS Secrets Manager.
 
 ---
 
