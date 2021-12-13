@@ -7,7 +7,7 @@ Replicated, password protected redis cluster statefulset setup. Uses Bitnamis re
 ```
   new Redis(chart, 'redis', {
     volumeSize: '10Gi',
-    replicas: 2,
+    replicas: 6,
     volumeFsType: 'ext4',
     volumeType: 'io1',
     volumeIopsPerGb: '100',
