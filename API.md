@@ -31784,6 +31784,19 @@ The size of volume to use.
 
 ---
 
+##### `enableAof`<sup>Optional</sup> <a name="cdk8s-redis-cluster.RedisOptions.property.enableAof"></a>
+
+```typescript
+public readonly enableAof: string;
+```
+
+- *Type:* `string`
+- *Default:* yes
+
+Enable AOF.
+
+---
+
 ##### `namespace`<sup>Optional</sup> <a name="cdk8s-redis-cluster.RedisOptions.property.namespace"></a>
 
 ```typescript

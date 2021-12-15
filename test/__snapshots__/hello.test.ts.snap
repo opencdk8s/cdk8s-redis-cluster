@@ -4248,7 +4248,7 @@ Array [
                 },
                 Object {
                   "name": "REDIS_AOF_ENABLED",
-                  "value": "yes",
+                  "value": "no",
                 },
                 Object {
                   "name": "REDIS_TLS_ENABLED",

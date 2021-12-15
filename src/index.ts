@@ -64,6 +64,11 @@ export interface RedisOptions {
    * @default undefined
    */
   readonly redisConfig?: string[];
+  /**
+   * Enable AOF
+   * @default yes
+   */
+  readonly enableAof?: string;
 }
 
 export class Redis extends Construct {
@@ -334,7 +339,7 @@ export class Redis extends Construct {
                 },
                 {
                   name: 'REDIS_AOF_ENABLED',
-                  value: 'yes',
+                  value: opts?.enableAof ? opts.enableAof : 'yes',
                 },
                 {
                   name: 'REDIS_TLS_ENABLED',
