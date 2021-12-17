@@ -31823,6 +31823,19 @@ Enable Kuma Service Mesh Dataplane injection.
 
 ---
 
+##### `kumaMeshName`<sup>Optional</sup> <a name="cdk8s-redis-cluster.RedisOptions.property.kumaMeshName"></a>
+
+```typescript
+public readonly kumaMeshName: string;
+```
+
+- *Type:* `string`
+- *Default:* undefined
+
+The Kuma Mesh name.
+
+---
+
 ##### `namespace`<sup>Optional</sup> <a name="cdk8s-redis-cluster.RedisOptions.property.namespace"></a>
 
 ```typescript

@@ -79,6 +79,12 @@ export interface RedisOptions {
    * @default false
    */
   readonly kumaMesh?: boolean;
+  /**
+   * The Kuma Mesh name
+   * @default undefined
+   *
+   */
+  readonly kumaMeshName?: string;
 }
 
 export class Redis extends Construct {
@@ -276,9 +282,10 @@ export class Redis extends Construct {
         podManagementPolicy: 'Parallel',
         template: {
           metadata: {
-            labels: opts?.kumaMesh ? {
+            labels: opts?.kumaMesh && opts?.kumaMeshName ? {
               'kuma.io/sidecar-injection': 'enabled',
               'app.kubernetes.io/name': name,
+              'kuma.io/mesh': opts?.kumaMeshName,
             } : {
               'app.kubernetes.io/name': name,
             },

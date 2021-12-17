@@ -30,6 +30,7 @@ test('with values', () => {
     volumeIopsPerGb: '100',
     redisImage: 'test-image',
     redisPassword: 'test2',
+    kumaMeshName: 'test-mesh',
     enableAof: 'no',
     announceIps: [
       '8.8.8.8',

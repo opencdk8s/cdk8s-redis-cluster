@@ -4172,6 +4172,7 @@ Array [
         "metadata": Object {
           "labels": Object {
             "app.kubernetes.io/name": "asdasd-redis",
+            "kuma.io/mesh": "test-mesh",
             "kuma.io/sidecar-injection": "enabled",
           },
         },
