@@ -130,7 +130,7 @@ export class Redis extends Construct {
       metadata: {
         name: name,
         labels: {
-          'app.kubernetes.io/name': name,
+          app: name,
         },
       },
       type: 'Opaque',
@@ -143,7 +143,7 @@ export class Redis extends Construct {
       metadata: {
         name: `${name}-default`,
         labels: {
-          'app.kubernetes.io/name': name,
+          app: name,
         },
       },
       data: {
@@ -155,7 +155,7 @@ export class Redis extends Construct {
       metadata: {
         name: `${name}-scripts`,
         labels: {
-          'app.kubernetes.io/name': name,
+          app: name,
         },
       },
       data: {
@@ -211,7 +211,7 @@ export class Redis extends Construct {
       metadata: {
         name: `${name}-headless`,
         labels: {
-          'app.kubernetes.io/name': name,
+          app: name,
         },
       },
       spec: {
@@ -231,7 +231,7 @@ export class Redis extends Construct {
           },
         ],
         selector: {
-          'app.kubernetes.io/name': name,
+          app: name,
         },
       },
     });
@@ -240,7 +240,7 @@ export class Redis extends Construct {
       metadata: {
         name: name,
         labels: {
-          'app.kubernetes.io/name': name,
+          app: name,
         },
         annotations: undefined,
       },
@@ -253,7 +253,7 @@ export class Redis extends Construct {
           protocol: 'TCP',
         }],
         selector: {
-          'app.kubernetes.io/name': name,
+          app: name,
         },
       },
     });
@@ -262,7 +262,7 @@ export class Redis extends Construct {
       metadata: {
         name: name,
         labels: {
-          'app.kubernetes.io/name': name,
+          app: name,
         },
       },
       spec: {
@@ -274,7 +274,7 @@ export class Redis extends Construct {
         },
         selector: {
           matchLabels: {
-            'app.kubernetes.io/name': name,
+            app: name,
           },
         },
         replicas: replicas,
@@ -282,12 +282,14 @@ export class Redis extends Construct {
         podManagementPolicy: 'Parallel',
         template: {
           metadata: {
-            labels: opts?.kumaMesh && opts?.kumaMeshName ? {
+            annotations: opts?.kumaMesh && opts?.kumaMeshName ? {
               'kuma.io/sidecar-injection': 'enabled',
-              'app.kubernetes.io/name': name,
               'kuma.io/mesh': opts?.kumaMeshName,
             } : {
-              'app.kubernetes.io/name': name,
+              'kuma.io/sidecar-injection': 'disabled',
+            },
+            labels: {
+              app: name,
             },
           },
           spec: {
@@ -303,7 +305,7 @@ export class Redis extends Construct {
                   podAffinityTerm: {
                     labelSelector: {
                       matchLabels: {
-                        'app.kubernetes.io/name': name,
+                        app: name,
                       },
                     },
                     namespaces: [ns],
@@ -469,7 +471,7 @@ export class Redis extends Construct {
           metadata: {
             name: 'redis-data',
             labels: {
-              'app.kubernetes.io/name': name,
+              app: name,
             },
           },
           spec: {

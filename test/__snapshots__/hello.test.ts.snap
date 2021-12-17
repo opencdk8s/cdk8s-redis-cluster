@@ -24,7 +24,7 @@ Array [
     "kind": "Secret",
     "metadata": Object {
       "labels": Object {
-        "app.kubernetes.io/name": "asd-redis",
+        "app": "asd-redis",
       },
       "name": "asd-redis",
       "namespace": "test",
@@ -1850,7 +1850,7 @@ Array [
     "kind": "ConfigMap",
     "metadata": Object {
       "labels": Object {
-        "app.kubernetes.io/name": "asd-redis",
+        "app": "asd-redis",
       },
       "name": "asd-redis-default",
       "namespace": "test",
@@ -1894,7 +1894,7 @@ Array [
     "kind": "ConfigMap",
     "metadata": Object {
       "labels": Object {
-        "app.kubernetes.io/name": "asd-redis",
+        "app": "asd-redis",
       },
       "name": "asd-redis-scripts",
       "namespace": "test",
@@ -1905,7 +1905,7 @@ Array [
     "kind": "Service",
     "metadata": Object {
       "labels": Object {
-        "app.kubernetes.io/name": "asd-redis",
+        "app": "asd-redis",
       },
       "name": "asd-redis-headless",
       "namespace": "test",
@@ -1926,7 +1926,7 @@ Array [
       ],
       "publishNotReadyAddresses": true,
       "selector": Object {
-        "app.kubernetes.io/name": "asd-redis",
+        "app": "asd-redis",
       },
       "type": "ClusterIP",
     },
@@ -1936,7 +1936,7 @@ Array [
     "kind": "Service",
     "metadata": Object {
       "labels": Object {
-        "app.kubernetes.io/name": "asd-redis",
+        "app": "asd-redis",
       },
       "name": "asd-redis",
       "namespace": "test",
@@ -1951,7 +1951,7 @@ Array [
         },
       ],
       "selector": Object {
-        "app.kubernetes.io/name": "asd-redis",
+        "app": "asd-redis",
       },
       "type": "ClusterIP",
     },
@@ -1961,7 +1961,7 @@ Array [
     "kind": "StatefulSet",
     "metadata": Object {
       "labels": Object {
-        "app.kubernetes.io/name": "asd-redis",
+        "app": "asd-redis",
       },
       "name": "asd-redis",
       "namespace": "test",
@@ -1971,14 +1971,17 @@ Array [
       "replicas": 3,
       "selector": Object {
         "matchLabels": Object {
-          "app.kubernetes.io/name": "asd-redis",
+          "app": "asd-redis",
         },
       },
       "serviceName": "asd-redis-headless",
       "template": Object {
         "metadata": Object {
+          "annotations": Object {
+            "kuma.io/sidecar-injection": "disabled",
+          },
           "labels": Object {
-            "app.kubernetes.io/name": "asd-redis",
+            "app": "asd-redis",
           },
         },
         "spec": Object {
@@ -1989,7 +1992,7 @@ Array [
                   "podAffinityTerm": Object {
                     "labelSelector": Object {
                       "matchLabels": Object {
-                        "app.kubernetes.io/name": "asd-redis",
+                        "app": "asd-redis",
                       },
                     },
                     "namespaces": Array [
@@ -2171,7 +2174,7 @@ Array [
         Object {
           "metadata": Object {
             "labels": Object {
-              "app.kubernetes.io/name": "asd-redis",
+              "app": "asd-redis",
             },
             "name": "redis-data",
           },
@@ -2217,7 +2220,7 @@ Array [
     "kind": "Secret",
     "metadata": Object {
       "labels": Object {
-        "app.kubernetes.io/name": "asdasd-redis",
+        "app": "asdasd-redis",
       },
       "name": "asdasd-redis",
       "namespace": "test",
@@ -4043,7 +4046,7 @@ Array [
     "kind": "ConfigMap",
     "metadata": Object {
       "labels": Object {
-        "app.kubernetes.io/name": "asdasd-redis",
+        "app": "asdasd-redis",
       },
       "name": "asdasd-redis-default",
       "namespace": "test",
@@ -4087,7 +4090,7 @@ Array [
     "kind": "ConfigMap",
     "metadata": Object {
       "labels": Object {
-        "app.kubernetes.io/name": "asdasd-redis",
+        "app": "asdasd-redis",
       },
       "name": "asdasd-redis-scripts",
       "namespace": "test",
@@ -4098,7 +4101,7 @@ Array [
     "kind": "Service",
     "metadata": Object {
       "labels": Object {
-        "app.kubernetes.io/name": "asdasd-redis",
+        "app": "asdasd-redis",
       },
       "name": "asdasd-redis-headless",
       "namespace": "test",
@@ -4119,7 +4122,7 @@ Array [
       ],
       "publishNotReadyAddresses": true,
       "selector": Object {
-        "app.kubernetes.io/name": "asdasd-redis",
+        "app": "asdasd-redis",
       },
       "type": "ClusterIP",
     },
@@ -4129,7 +4132,7 @@ Array [
     "kind": "Service",
     "metadata": Object {
       "labels": Object {
-        "app.kubernetes.io/name": "asdasd-redis",
+        "app": "asdasd-redis",
       },
       "name": "asdasd-redis",
       "namespace": "test",
@@ -4144,7 +4147,7 @@ Array [
         },
       ],
       "selector": Object {
-        "app.kubernetes.io/name": "asdasd-redis",
+        "app": "asdasd-redis",
       },
       "type": "ClusterIP",
     },
@@ -4154,7 +4157,7 @@ Array [
     "kind": "StatefulSet",
     "metadata": Object {
       "labels": Object {
-        "app.kubernetes.io/name": "asdasd-redis",
+        "app": "asdasd-redis",
       },
       "name": "asdasd-redis",
       "namespace": "test",
@@ -4164,16 +4167,18 @@ Array [
       "replicas": 2,
       "selector": Object {
         "matchLabels": Object {
-          "app.kubernetes.io/name": "asdasd-redis",
+          "app": "asdasd-redis",
         },
       },
       "serviceName": "asdasd-redis-headless",
       "template": Object {
         "metadata": Object {
-          "labels": Object {
-            "app.kubernetes.io/name": "asdasd-redis",
+          "annotations": Object {
             "kuma.io/mesh": "test-mesh",
             "kuma.io/sidecar-injection": "enabled",
+          },
+          "labels": Object {
+            "app": "asdasd-redis",
           },
         },
         "spec": Object {
@@ -4184,7 +4189,7 @@ Array [
                   "podAffinityTerm": Object {
                     "labelSelector": Object {
                       "matchLabels": Object {
-                        "app.kubernetes.io/name": "asdasd-redis",
+                        "app": "asdasd-redis",
                       },
                     },
                     "namespaces": Array [
@@ -4378,7 +4383,7 @@ Array [
         Object {
           "metadata": Object {
             "labels": Object {
-              "app.kubernetes.io/name": "asdasd-redis",
+              "app": "asdasd-redis",
             },
             "name": "redis-data",
           },
