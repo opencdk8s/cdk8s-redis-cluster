@@ -69,6 +69,16 @@ export interface RedisOptions {
    * @default yes
    */
   readonly enableAof?: string;
+  /**
+   * Announce IPS to Redis
+   * @default undefined
+   */
+  readonly announceIps?: string[];
+  /**
+   * Enable Kuma Service Mesh Dataplane injection
+   * @default false
+   */
+  readonly kumaMesh?: boolean;
 }
 
 export class Redis extends Construct {
@@ -85,6 +95,17 @@ export class Redis extends Construct {
     super(scope, name);
 
     const ns = opts?.namespace ? opts.namespace : 'default';
+
+    var a: string = '';
+
+    if (opts?.announceIps) {
+      const ips = opts.announceIps?.join(' ') ;
+      a = `ips=($(echo "[${ips}]" | cut -d [ -f2 | cut -d ] -f 1))
+     export REDIS_CLUSTER_ANNOUNCE_IP="\${ips[$pod_index]}"
+     export REDIS_NODES="\${ips[@]}"`;
+
+    }
+
 
     const storageClass = new k8s.KubeStorageClass(this, 'storageClass', {
       metadata: {
@@ -255,7 +276,10 @@ export class Redis extends Construct {
         podManagementPolicy: 'Parallel',
         template: {
           metadata: {
-            labels: {
+            labels: opts?.kumaMesh ? {
+              'kuma.io/sidecar-injection': 'enabled',
+              'app.kubernetes.io/name': name,
+            } : {
               'app.kubernetes.io/name': name,
             },
           },
@@ -299,6 +323,7 @@ export class Redis extends Construct {
                   echo COPYING FILE
                   cp  /opt/bitnami/redis/etc/redis-default.conf /opt/bitnami/redis/etc/redis.conf
               fi
+              ${a}
               pod_index=($(echo "$POD_NAME" | tr "-" "\n"))
               pod_index="\${pod_index[-1]}"
               if [[ "$pod_index" == "0" ]]; then

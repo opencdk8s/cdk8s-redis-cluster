@@ -2010,6 +2010,7 @@ Array [
                   echo COPYING FILE
                   cp  /opt/bitnami/redis/etc/redis-default.conf /opt/bitnami/redis/etc/redis.conf
               fi
+              
               pod_index=($(echo \\"$POD_NAME\\" | tr \\"-\\" \\"
 \\"))
               pod_index=\\"\${pod_index[-1]}\\"
@@ -4171,6 +4172,7 @@ Array [
         "metadata": Object {
           "labels": Object {
             "app.kubernetes.io/name": "asdasd-redis",
+            "kuma.io/sidecar-injection": "enabled",
           },
         },
         "spec": Object {
@@ -4202,6 +4204,9 @@ Array [
                   echo COPYING FILE
                   cp  /opt/bitnami/redis/etc/redis-default.conf /opt/bitnami/redis/etc/redis.conf
               fi
+              ips=($(echo \\"[8.8.8.8 123.123.234.4325]\\" | cut -d [ -f2 | cut -d ] -f 1))
+     export REDIS_CLUSTER_ANNOUNCE_IP=\\"\${ips[$pod_index]}\\"
+     export REDIS_NODES=\\"\${ips[@]}\\"
               pod_index=($(echo \\"$POD_NAME\\" | tr \\"-\\" \\"
 \\"))
               pod_index=\\"\${pod_index[-1]}\\"

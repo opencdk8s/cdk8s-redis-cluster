@@ -31784,6 +31784,19 @@ The size of volume to use.
 
 ---
 
+##### `announceIps`<sup>Optional</sup> <a name="cdk8s-redis-cluster.RedisOptions.property.announceIps"></a>
+
+```typescript
+public readonly announceIps: string[];
+```
+
+- *Type:* `string`[]
+- *Default:* undefined
+
+Announce IPS to Redis.
+
+---
+
 ##### `enableAof`<sup>Optional</sup> <a name="cdk8s-redis-cluster.RedisOptions.property.enableAof"></a>
 
 ```typescript
@@ -31794,6 +31807,19 @@ public readonly enableAof: string;
 - *Default:* yes
 
 Enable AOF.
+
+---
+
+##### `kumaMesh`<sup>Optional</sup> <a name="cdk8s-redis-cluster.RedisOptions.property.kumaMesh"></a>
+
+```typescript
+public readonly kumaMesh: boolean;
+```
+
+- *Type:* `boolean`
+- *Default:* false
+
+Enable Kuma Service Mesh Dataplane injection.
 
 ---
 

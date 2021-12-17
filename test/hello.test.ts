@@ -10,6 +10,7 @@ test('with cm', () => {
   new Redis(chart, 'asd-redis', {
     volumeSize: '10Gi',
     redisPassword: 'test',
+    kumaMesh: false,
   });
 
   expect(Testing.synth(chart)).toMatchSnapshot();
@@ -30,10 +31,15 @@ test('with values', () => {
     redisImage: 'test-image',
     redisPassword: 'test2',
     enableAof: 'no',
+    announceIps: [
+      '8.8.8.8',
+      '123.123.234.4325',
+    ],
     nodeSelector: {
       test: 'test',
     },
     namespace: 'test',
+    kumaMesh: true,
     tolerations: [
       {
         key: 'test',
