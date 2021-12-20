@@ -85,6 +85,11 @@ export interface RedisOptions {
    *
    */
   readonly kumaMeshName?: string;
+  /**
+   * Annouce replica ip
+   * @default undefined
+   */
+  readonly annouceReplicaIp?: boolean;
 }
 
 export class Redis extends Construct {
@@ -110,6 +115,12 @@ export class Redis extends Construct {
      export REDIS_CLUSTER_ANNOUNCE_IP="\${ips[$pod_index]}"
      export REDIS_NODES="\${ips[@]}"`;
 
+    }
+
+    var b: string = '';
+
+    if (opts?.annouceReplicaIp) {
+      b = 'echo "replica-announce-ip $POD_IP" >> /opt/bitnami/redis/etc/redis.conf"';
     }
 
 
@@ -339,6 +350,7 @@ export class Redis extends Construct {
                 export REDIS_CLUSTER_CREATOR="yes"
                 export REDIS_CLUSTER_REPLICAS="1"
               fi
+              ${b}
               /opt/bitnami/scripts/redis-cluster/entrypoint.sh /opt/bitnami/scripts/redis-cluster/run.sh`],
               env: [
                 {
@@ -382,6 +394,14 @@ export class Redis extends Construct {
                 {
                   name: 'REDIS_PORT',
                   value: '6379',
+                },
+                {
+                  name: 'POD_IP',
+                  valueFrom: {
+                    fieldRef: {
+                      fieldPath: 'status.podIP',
+                    },
+                  },
                 },
               ],
               ports: [

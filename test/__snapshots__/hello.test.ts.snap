@@ -2021,6 +2021,7 @@ Array [
                 export REDIS_CLUSTER_CREATOR=\\"yes\\"
                 export REDIS_CLUSTER_REPLICAS=\\"1\\"
               fi
+              echo \\"replica-announce-ip $POD_IP\\" >> /opt/bitnami/redis/etc/redis.conf\\"
               /opt/bitnami/scripts/redis-cluster/entrypoint.sh /opt/bitnami/scripts/redis-cluster/run.sh",
               ],
               "command": Array [
@@ -2069,6 +2070,14 @@ Array [
                 Object {
                   "name": "REDIS_PORT",
                   "value": "6379",
+                },
+                Object {
+                  "name": "POD_IP",
+                  "valueFrom": Object {
+                    "fieldRef": Object {
+                      "fieldPath": "status.podIP",
+                    },
+                  },
                 },
               ],
               "image": "docker.io/bitnami/redis-cluster:6.2.6-debian-10-r49",
@@ -4220,6 +4229,7 @@ Array [
                 export REDIS_CLUSTER_CREATOR=\\"yes\\"
                 export REDIS_CLUSTER_REPLICAS=\\"1\\"
               fi
+              
               /opt/bitnami/scripts/redis-cluster/entrypoint.sh /opt/bitnami/scripts/redis-cluster/run.sh",
               ],
               "command": Array [
@@ -4268,6 +4278,14 @@ Array [
                 Object {
                   "name": "REDIS_PORT",
                   "value": "6379",
+                },
+                Object {
+                  "name": "POD_IP",
+                  "valueFrom": Object {
+                    "fieldRef": Object {
+                      "fieldPath": "status.podIP",
+                    },
+                  },
                 },
               ],
               "image": "test-image",
