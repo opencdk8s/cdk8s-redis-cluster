@@ -86,10 +86,10 @@ export interface RedisOptions {
    */
   readonly kumaMeshName?: string;
   /**
-   * Annouce replica ip
+   * Announce replica ip
    * @default undefined
    */
-  readonly annouceReplicaIp?: boolean;
+  readonly announceReplicaIp?: boolean;
 }
 
 export class Redis extends Construct {
@@ -119,8 +119,8 @@ export class Redis extends Construct {
 
     var b: string = '';
 
-    if (opts?.annouceReplicaIp) {
-      b = 'echo "replica-announce-ip $POD_IP" >> /opt/bitnami/redis/etc/redis.conf"';
+    if (opts?.announceReplicaIp) {
+      b = 'echo "replica-announce-ip $POD_IP" >> /opt/bitnami/redis/etc/redis.conf';
     }
 
 

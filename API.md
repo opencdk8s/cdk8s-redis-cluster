@@ -31784,19 +31784,6 @@ The size of volume to use.
 
 ---
 
-##### `annouceReplicaIp`<sup>Optional</sup> <a name="cdk8s-redis-cluster.RedisOptions.property.annouceReplicaIp"></a>
-
-```typescript
-public readonly annouceReplicaIp: boolean;
-```
-
-- *Type:* `boolean`
-- *Default:* undefined
-
-Annouce replica ip.
-
----
-
 ##### `announceIps`<sup>Optional</sup> <a name="cdk8s-redis-cluster.RedisOptions.property.announceIps"></a>
 
 ```typescript
@@ -31807,6 +31794,19 @@ public readonly announceIps: string[];
 - *Default:* undefined
 
 Announce IPS to Redis.
+
+---
+
+##### `announceReplicaIp`<sup>Optional</sup> <a name="cdk8s-redis-cluster.RedisOptions.property.announceReplicaIp"></a>
+
+```typescript
+public readonly announceReplicaIp: boolean;
+```
+
+- *Type:* `boolean`
+- *Default:* undefined
+
+Announce replica ip.
 
 ---
 

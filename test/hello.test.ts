@@ -11,7 +11,7 @@ test('with cm', () => {
     volumeSize: '10Gi',
     redisPassword: 'test',
     kumaMesh: false,
-    annouceReplicaIp: true,
+    announceReplicaIp: true,
   });
 
   expect(Testing.synth(chart)).toMatchSnapshot();
