@@ -1,4 +1,4 @@
-const { ConstructLibraryCdk8s } = require('projen');
+const { ConstructLibraryCdk8s } = require('projen/lib/cdk8s');
 
 const project = new ConstructLibraryCdk8s({
   author: 'Hunter Thompson',
@@ -9,8 +9,8 @@ const project = new ConstructLibraryCdk8s({
   stability: 'experimental',
   repositoryUrl: 'https://github.com/opencdk8s/cdk8s-redis-cluster.git',
 
-  cdk8sVersion: '1.2.1',
-  constructsVersion: '3.3.161',
+  cdk8sVersion: '2.2.74',
+  constructsVersion: '10.0.5',
   githubOptions: {
     mergify: true,
   },
